@@ -9,7 +9,7 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link } from "react-router-dom";
 
-const navBar = () => {
+const NavBar = () => {
   return (
     <div className="navbar">
       <div className="left">
@@ -25,9 +25,17 @@ const navBar = () => {
           </Link>
         
       </div>
-      <div className="right"></div>
+      <div className="right">
+          <PersonOutlinedIcon />
+          <EmailOutlinedIcon />
+          <NotificationsOutlinedIcon />
+          <div className="user">
+            {/*<img src="https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600" alt=""/>*/}
+            <span>John Doe</span>
+          </div>
+      </div>
     </div>
   );
 };
 
-export default navBar;
+export default NavBar;

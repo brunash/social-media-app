@@ -7,9 +7,9 @@ import {
   Outlet,
   Navigate,
 } from "react-router-dom";
-import navBar from "./components/navbar/navBar";
-import rightBar from "./components/rightBar/rightBar";
-import leftBar from "./components/leftBar/leftBar";
+import NavBar from "./components/navbar/navBar";
+import RightBar from "./components/rightBar/rightBar";
+import LeftBar from "./components/leftBar/leftBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 
@@ -20,11 +20,11 @@ function App() {
   const Layout = () => {
     return (
       <div>
-        <navBar />
+        <NavBar />
         <div style={{ display: "flex" }}>
-          <leftBar />
+          <LeftBar />
           <Outlet />
-          <rightBar />
+          <RightBar />
         </div>
       </div>
     );
