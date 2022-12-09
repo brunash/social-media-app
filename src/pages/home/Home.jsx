@@ -1,8 +1,8 @@
 import "./Home.scss";
-
+import navBar from "../../components/navbar/navBar";
 const Home = () => {
     return (
-        <div>Home</div>
+        <div><navBar/></div>
     )
 }
 
