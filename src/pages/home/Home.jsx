@@ -2,8 +2,10 @@ import "./Home.scss";
 import navBar from "../../components/navbar/navBar";
 const Home = () => {
     return (
-        <div><navBar/></div>
-    )
+      <div className="home">
+        <h1>Home</h1>
+      </div>
+    );
 }
 
 export default Home;

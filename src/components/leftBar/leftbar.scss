@@ -14,9 +14,9 @@
     //   display: none;
     // }
 
-    // &::-webkit-scrollbar {
-    //   display: none;
-    // }
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     .container {
       padding: 20px;
