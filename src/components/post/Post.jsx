@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
  import Comments from "../comments/Comments";
 import { useState } from "react";
 import moment from "moment";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
@@ -25,6 +25,24 @@ const Post = ({ post }) => {
     })
   );
 
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(
+    (liked) => {
+      if(liked) return makeRequest.delete("/likes?postId=", post.id);
+      return makeRequest.post("/likes", { postId: post.id });
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries(["likes"]);
+      },
+    }
+  );
+
+  const handleLike = () => {
+    mutation.mutate(data.includes(currentUser.id));
+  }
   
   return (
     <div className="post">
@@ -53,9 +71,12 @@ const Post = ({ post }) => {
             {isLoading ? (
               "loading"
             ) : data.includes(currentUser.id) ? (
-              <FavoriteOutlinedIcon style={{ color: "red" }} />
+              <FavoriteOutlinedIcon
+                style={{ color: "red" }}
+                onClick={handleLike}
+              />
             ) : (
-              <FavoriteBorderOutlinedIcon />
+              <FavoriteBorderOutlinedIcon onClick={handleLike} />
             )}
             {data?.length} Likes
           </div>
